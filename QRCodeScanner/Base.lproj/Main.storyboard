@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -653,7 +655,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="QRCodeScanner" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
@@ -661,12 +663,15 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                <windowController id="B8D-0N-5wS" customClass="WindowController" customModule="QRCodeScanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="QRCode Scanner" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="YXU-yO-B6X"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -679,15 +684,101 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="QRCodeScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="411" height="352"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="kWR-m2-MrA" customClass="CutView" customModule="QRCodeScanner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="352"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="OZC-mc-4tB"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="vAH-6M-mjn" customClass="CutView" customModule="QRCodeScanner" customModuleProvider="target">
+                                <rect key="frame" x="386" y="0.0" width="25" height="352"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="WQ4-fN-13p"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="uqo-PJ-2UC" customClass="CutView" customModule="QRCodeScanner" customModuleProvider="target">
+                                <rect key="frame" x="20" y="327" width="371" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="KNv-Vr-qXs"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="6Nr-7p-5xD" customClass="CutView" customModule="QRCodeScanner" customModuleProvider="target">
+                                <rect key="frame" x="20" y="0.0" width="371" height="70"/>
+                                <subviews>
+                                    <scrollView wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzp-PS-G7U">
+                                        <rect key="frame" x="0.0" y="20" width="371" height="30"/>
+                                        <clipView key="contentView" id="S8N-Ti-yDf">
+                                            <rect key="frame" x="1" y="1" width="369" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView editable="NO" importsGraphics="NO" baseWritingDirection="leftToRight" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" id="LUa-2G-0yJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="369" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <size key="minSize" width="28" height="28"/>
+                                                    <size key="maxSize" width="463" height="10000000"/>
+                                                    <attributedString key="textStorage">
+                                                        <fragment content="Move to QRCode">
+                                                            <attributes>
+                                                                <font key="NSFont" metaFont="system" size="11"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </textView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="aJW-Xh-sOa"/>
+                                        </constraints>
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="PIR-4o-bdc">
+                                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="QZ8-8F-mjV">
+                                            <rect key="frame" x="354" y="1" width="16" height="28"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hzp-PS-G7U" secondAttribute="trailing" id="JsR-Sw-eZh"/>
+                                    <constraint firstAttribute="bottom" secondItem="hzp-PS-G7U" secondAttribute="bottom" constant="20" id="KiC-QE-5A2"/>
+                                    <constraint firstAttribute="height" constant="70" id="Q0Y-Rk-sbA"/>
+                                    <constraint firstItem="hzp-PS-G7U" firstAttribute="leading" secondItem="6Nr-7p-5xD" secondAttribute="leading" id="Xjt-lv-MkC"/>
+                                    <constraint firstItem="hzp-PS-G7U" firstAttribute="top" secondItem="6Nr-7p-5xD" secondAttribute="top" constant="20" id="qjI-n7-dEe"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="vAH-6M-mjn" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="4D5-XV-GLK"/>
+                            <constraint firstAttribute="trailing" secondItem="uqo-PJ-2UC" secondAttribute="trailing" constant="20" id="4RL-2W-GDo"/>
+                            <constraint firstItem="uqo-PJ-2UC" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="HUe-2X-4hk"/>
+                            <constraint firstItem="6Nr-7p-5xD" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Iax-UZ-WHa"/>
+                            <constraint firstAttribute="bottom" secondItem="kWR-m2-MrA" secondAttribute="bottom" id="KsV-M0-65u"/>
+                            <constraint firstItem="uqo-PJ-2UC" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="SLJ-sO-S1q"/>
+                            <constraint firstAttribute="bottom" secondItem="6Nr-7p-5xD" secondAttribute="bottom" id="ZwS-eX-Pd5"/>
+                            <constraint firstAttribute="trailing" secondItem="vAH-6M-mjn" secondAttribute="trailing" id="cUU-7U-QJE"/>
+                            <constraint firstItem="kWR-m2-MrA" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="qDZ-Zh-a5L"/>
+                            <constraint firstItem="kWR-m2-MrA" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="sFW-P5-5fW"/>
+                            <constraint firstAttribute="trailing" secondItem="6Nr-7p-5xD" secondAttribute="trailing" constant="20" id="ubs-FP-CwZ"/>
+                            <constraint firstAttribute="bottom" secondItem="vAH-6M-mjn" secondAttribute="bottom" id="vXH-Uj-DcQ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="resultTextField" destination="LUa-2G-0yJ" id="oWR-4W-uW2"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="40.5" y="700"/>
         </scene>
     </scenes>
 </document>

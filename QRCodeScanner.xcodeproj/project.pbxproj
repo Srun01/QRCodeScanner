@@ -11,6 +11,8 @@
 		E65F11CE1EEA58150039ABED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65F11CD1EEA58150039ABED /* ViewController.swift */; };
 		E65F11D01EEA58150039ABED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E65F11CF1EEA58150039ABED /* Assets.xcassets */; };
 		E65F11D31EEA58150039ABED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E65F11D11EEA58150039ABED /* Main.storyboard */; };
+		E65F11DB1EEA5F1C0039ABED /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65F11DA1EEA5F1C0039ABED /* WindowController.swift */; };
+		E65F11DD1EEA636D0039ABED /* CutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65F11DC1EEA636D0039ABED /* CutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		E65F11CF1EEA58150039ABED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E65F11D21EEA58150039ABED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E65F11D41EEA58150039ABED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E65F11DA1EEA5F1C0039ABED /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		E65F11DC1EEA636D0039ABED /* CutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				E65F11CF1EEA58150039ABED /* Assets.xcassets */,
 				E65F11D11EEA58150039ABED /* Main.storyboard */,
 				E65F11D41EEA58150039ABED /* Info.plist */,
+				E65F11DA1EEA5F1C0039ABED /* WindowController.swift */,
+				E65F11DC1EEA636D0039ABED /* CutView.swift */,
 			);
 			path = QRCodeScanner;
 			sourceTree = "<group>";
@@ -134,7 +140,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E65F11CE1EEA58150039ABED /* ViewController.swift in Sources */,
+				E65F11DB1EEA5F1C0039ABED /* WindowController.swift in Sources */,
 				E65F11CC1EEA58150039ABED /* AppDelegate.swift in Sources */,
+				E65F11DD1EEA636D0039ABED /* CutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,12 +256,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Z87CX75J8Y;
 				INFOPLIST_FILE = QRCodeScanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.srun.QRCodeScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -262,12 +272,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Z87CX75J8Y;
 				INFOPLIST_FILE = QRCodeScanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.srun.QRCodeScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
